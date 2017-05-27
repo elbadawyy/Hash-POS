@@ -32,3 +32,35 @@ class dbHelper:
 		query="INSERT INTO warehouses(name,description) VALUES ('"+warehouseName+"','"+desc+"')"
 		conn.execute(query)
 		conn.commit()
+	
+	
+	@staticmethod
+	def modWarehouseInDb(WarehouseId="",newWarehouseName="",newDesc=""):
+		dbHelper.importDbVars()
+		os.chdir(dBDir)
+		try:
+			conn = sqlite3.connect(dBName)
+		except Error as e:
+			print(e)
+		
+		print 'Connection Succeed With {}'.format(dBName)
+		query="UPDATE warehouses SET name='"+newWarehouseName+"', description='"+newDesc+"' WHERE id ='" + WarehouseId +"'"
+		conn.execute(query)
+		conn.commit()
+		
+	@staticmethod
+	def delWarehouseFrmDb(WarehouseId=""):
+		dbHelper.importDbVars()
+		os.chdir(dBDir)
+		try:
+			conn = sqlite3.connect(dBName)
+		except Error as e:
+			print(e)
+		
+		print 'Connection Succeed With {}'.format(dBName)
+		query="DELETE FROM warehouses WHERE (id = '"+WarehouseId+"')"
+		conn.execute(query)
+		conn.commit()
+		
+	
+	

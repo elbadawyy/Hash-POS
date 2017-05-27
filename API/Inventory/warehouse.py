@@ -16,43 +16,45 @@ class Warehouse:
  
 		msg=""
 		if(warehouseName==''):
-			msg="error msg Warehouse Name not found !!!"
+			msg="Error: msg Warehouse Name not found !!!"
 			return msg
 		
 		dbHelper.addWarehouseInDb(warehouseName,desc)
-		print "success Adding"
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		msg="Success Adding"
+		return msg
 		
 		
 		
 
-	def modWarehouse():
-	  print "" 
-	def delWarehouse():
-		print " " 
-	def mvToWarehouse():
-		print " " 
+		
+		
+
+	def modWarehouse(self,WarehouseId="0", newWarehouseName="", newDesc=""): 
+		msg=""
+		if(WarehouseId=="0") or (newDesc==""):
+			msg="Error: WarehouseId or newDesc not found !!!"
+			return msg
+		
+		dbHelper.modWarehouseInDb(WarehouseId,newWarehouseName,newDesc)
+		msg="Success Modifing"
+		return msg
 	  
 	  
-	def modAmount():
-		print " "
+	  
+	def delWarehouse(self,WarehouseId="0"):
+		msg=""
+		if(WarehouseId==''):
+			msg="Error: msg Warehouse Id not found !!!"
+			return msg
+		
+		dbHelper.delWarehouseFrmDb(WarehouseId)
+		msg="Success Deleting"
+		return msg
+	
+	
+
 		
 mainWare = Warehouse()
-mainWare.addWarehouse("DumpWareHouse","DumpDescription")
+addWarehouse("mainWarehous", "desc"):
+modWarehouse("4", "newname", "newDesc")
+mainWare.delWarehouse("4")
