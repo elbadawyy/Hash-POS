@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '../Helper')
+sys.path.insert(0, 'Helper')
 from dbHelper import *
 
 class Warehouse(Table):
