@@ -12,6 +12,9 @@ class dbHelper:
 	def importDbVars():
 		global dBDir
 		global dBName
+		global cwd
+		
+		cwd = os.getcwd()
 		config = ConfigParser.ConfigParser()
 		#Some Validations Gous Here To Check The Configration File
 		config.read('../../Config/DB.conf')
@@ -21,6 +24,7 @@ class dbHelper:
 	@staticmethod
 	def addEntry(table, field_tuple, value_tuple):
 		dbHelper.importDbVars()
+		
 		os.chdir(dBDir)
 		try:
 			conn = sqlite3.connect(dBName)
@@ -35,6 +39,7 @@ class dbHelper:
 		conn.execute(query)
 		conn.commit()
 		conn.close()
+		os.chdir(cwd)
 
 	@staticmethod
 	def modEntry(table ,id , field, value):
@@ -49,10 +54,13 @@ class dbHelper:
 		query="UPDATE "+table+" SET "+field+" = '"+value+"' WHERE id ='"+id+"'"
 		conn.execute(query)
 		conn.commit()
-
+		conn.close()
+		os.chdir(cwd)
+		
 	@staticmethod
 	def delEntry(table, id):
 		dbHelper.importDbVars()
+		cwd = os.getcwd()
 		os.chdir(dBDir)
 		try:
 			conn = sqlite3.connect(dBName)
@@ -64,10 +72,12 @@ class dbHelper:
 		conn.execute(query)
 		conn.commit()
 		conn.close()
+		os.chdir(cwd)
 
 	@staticmethod
 	def resolvNameToID(table, name):
 		dbHelper.importDbVars()
+		
 		os.chdir(dBDir)
 		try:
 			conn = sqlite3.connect(dBName)
@@ -78,6 +88,7 @@ class dbHelper:
 		cur = conn.cursor()
 		cur.execute(query)
 		conn.commit()
+		os.chdir(cwd)
 		id = cur.fetchone()
 		for i in id:
 			id = i
