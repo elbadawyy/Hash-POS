@@ -17,7 +17,7 @@ class dbHelper:
 		cwd = os.getcwd()
 		config = ConfigParser.ConfigParser()
 		#Some Validations Goes Here To Check The Configration File
-		config.read('../../Config/DB.conf')
+		config.read('/home/user/Code/Hash-POS/Config/DB.conf')
 		dBDir = config.get('DataBaseConfig', 'DataBaseDirPath')
 		dBName = config.get('DataBaseConfig', 'DataBaseName')
 
@@ -95,7 +95,26 @@ class dbHelper:
 
 		return id
 
+	@staticmethod
+	def listFieldVals(table, field):
+		dbHelper.importDbVars()
 
+		os.chdir(dBDir)
+		try:
+			conn = sqlite3.connect(dBName)
+		except Error as e:
+			print(e)
+		print 'Connection Succeed With {}'.format(dBName)
+		query = "SELECT "+field+" FROM "+table+""
+		cur = conn.cursor()
+		cur.execute(query)
+		conn.commit()
+		os.chdir(cwd)
+		id = cur.fetchall()
+		res=[]
+		for i in id:
+                        res.append(i[0])
+		return res
 class Table:
 
 	__metaclass__ = ABCMeta
