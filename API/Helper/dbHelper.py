@@ -13,7 +13,7 @@ class dbHelper:
 		global dBDir
 		global dBName
 		config = ConfigParser.ConfigParser()
-		#Some Validations Gous Here To Check The Configration File
+		#Some Validations Goes Here To Check The Configration File
 		config.read('../../Config/DB.conf')
 		dBDir = config.get('DataBaseConfig', 'DataBaseDirPath')
 		dBName = config.get('DataBaseConfig', 'DataBaseName')
@@ -49,6 +49,7 @@ class dbHelper:
 		query="UPDATE "+table+" SET "+field+" = '"+value+"' WHERE id ='"+id+"'"
 		conn.execute(query)
 		conn.commit()
+		conn.close()
 
 	@staticmethod
 	def delEntry(table, id):
