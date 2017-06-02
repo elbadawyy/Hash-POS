@@ -55,12 +55,8 @@ class dbHelper:
 		conn.execute(query)
 		conn.commit()
 		conn.close()
-<<<<<<< HEAD
-
-=======
 		os.chdir(cwd)
 		
->>>>>>> 234adc3120195f9d5656fea2c95acdf342ad6ce0
 	@staticmethod
 	def delEntry(table, id):
 		dbHelper.importDbVars()
