@@ -27,7 +27,7 @@ class Attribute(Table):
 
 class Item(Table):
 	table="items"
-	field_tuple=('name', 'number', 'label', 'warehouse_id', 'category_id', 'from_customer_id', 'description')
+	field_tuple=('name', 'quantity', 'barcode', 'warehouse_id', 'category_id', 'from_customer_id', 'description')
 
 	def retTableName(self):
 		return "items"
