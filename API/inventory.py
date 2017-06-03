@@ -54,6 +54,6 @@ class Item_Cat(Table):
 #cat.modify(id, 'description', 'Wearable things')
 #dbHelper.listFieldVals('attributes', 'name')
 #ic = Item_Cat()
-#ic.add(('5', '2'))
+#ic.add(('5', '3'))
 #ia = Item_Attr()
 #ia.add(('5', '1', 'Black'))

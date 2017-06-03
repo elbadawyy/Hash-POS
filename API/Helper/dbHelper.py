@@ -6,6 +6,11 @@ from sqlite3 import Error
 import os
 from abc import ABCMeta, abstractmethod
 
+curr_dir = os.path.dirname(os.path.realpath(__file__))
+api_dir = os.path.abspath(os.path.join(curr_dir, '..'))
+root_dir = os.path.abspath(os.path.join(api_dir, '..'))
+config_file = os.path.abspath(os.path.join(root_dir, 'Config/DB.conf'))
+
 class dbHelper:
 	
 	@staticmethod
@@ -13,11 +18,10 @@ class dbHelper:
 		global dBDir
 		global dBName
 		global cwd
-		
 		cwd = os.getcwd()
 		config = ConfigParser.ConfigParser()
 		#Some Validations Goes Here To Check The Configration File
-		config.read('/home/user/Code/Hash-POS/Config/DB.conf')
+		config.read(config_file)
 		dBDir = config.get('DataBaseConfig', 'DataBaseDirPath')
 		dBName = config.get('DataBaseConfig', 'DataBaseName')
 
