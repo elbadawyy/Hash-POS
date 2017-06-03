@@ -10,7 +10,8 @@ from abc import ABCMeta, abstractmethod
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 api_dir = os.path.abspath(os.path.join(curr_dir, '..'))
 root_dir = os.path.abspath(os.path.join(api_dir, '..'))
-config_file = os.path.abspath(os.path.join(root_dir, 'Config/DB.conf'))
+config_dir = os.path.abspath(os.path.join(root_dir, 'Config'))
+config_file = os.path.abspath(os.path.join(config_dir, 'DB.conf'))
 
 class API:
 	
