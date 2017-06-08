@@ -62,7 +62,6 @@ class API:
 	@staticmethod
 	def delEntry(table, id):
 		API.importDBVars()
-		cwd = os.getcwd()
 		os.chdir(db_dir)
 		try:
 			conn = sqlite3.connect(db_name)
