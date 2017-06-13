@@ -31,6 +31,13 @@ class Item(Table):
 	table="items"
 	field_tuple=('name', 'quantity', 'barcode', 'warehouse_id', 'category_id', 'from_customer_id', 'description')
 
+	def mvItemToWrHouse(self,item_id,warehouse_id):
+		
+
+		self.modify(item_id, "warehouse_id",str(warehouse_id) )
+		print 'Modifing Succeed'
+
+
 	def retTableName(self):
 		return "items"
 
@@ -48,10 +55,13 @@ class Item_Cat(Table):
 	def retTableName(self):
 		return "item_attr"
 
+newitem = Item()
+newitem.mvItemToWrHouse(1,2);
+#newitem.add(('itemname', '1', '123', '0', '2', 'asd', 'nodescription'))
 #cat = Category()
 #cat.add(('Materials', 'Meta Description'))
 #attr = Attribute()
-#attr.add(('Size', 'Products sizes will be defined by this attribute'))
+#attr.add(('Lenght', 'Products sizes will be defined by this attribute'))
 #attr.add(('Weight', 'Products weights will be defined by this attribute'))
 #id = API.resolvNameToID('items', 'mars')
 #cat.modify(id, 'description', 'Wearable things')
@@ -60,3 +70,4 @@ class Item_Cat(Table):
 #ic.add(('5', '3'))
 #ia = Item_Attr()
 #ia.add(('5', '1', 'Black'))
+

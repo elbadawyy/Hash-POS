@@ -152,6 +152,9 @@ class Table:
 		errcode="0"
 		return errcode
 
+	
+
+
 	@abstractmethod    
 	def retTableName(self):
 		pass
