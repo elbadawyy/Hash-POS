@@ -33,9 +33,17 @@ class Item(Table):
 
 	def mvItemToWrHouse(self,item_id,warehouse_id):
 		
+		err = self.chkIdExistInTable(warehouse_id,"warehouses")
+		
+		if(err == "0"):
+		
+			self.modify(item_id, "warehouse_id",str(warehouse_id) )
+			print 'Modifing Succeed'
+		else:
+			print 'WareHouse Not Found'
 
-		self.modify(item_id, "warehouse_id",str(warehouse_id) )
-		print 'Modifing Succeed'
+
+		
 
 
 	def retTableName(self):
@@ -56,7 +64,7 @@ class Item_Cat(Table):
 		return "item_attr"
 
 newitem = Item()
-newitem.mvItemToWrHouse(1,2);
+newitem.mvItemToWrHouse("1","5");
 #newitem.add(('itemname', '1', '123', '0', '2', 'asd', 'nodescription'))
 #cat = Category()
 #cat.add(('Materials', 'Meta Description'))

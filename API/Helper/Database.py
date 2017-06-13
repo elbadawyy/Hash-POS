@@ -115,6 +115,26 @@ class API:
                         res.append(i[0])
 		return res
 		conn.close()
+
+	@staticmethod
+	def chkIdExist(table, id):
+		API.importDBVars()
+
+		os.chdir(db_dir)
+		try:
+			conn = sqlite3.connect(db_name)
+		except Error as e:
+			print(e)
+		print 'Connection Succeed With {}'.format(db_name)
+		query="SELECT * FROM "+table+" WHERE id ='"+str(id)+"'"
+		
+		cur = conn.cursor()
+		cur.execute(query)
+
+		conn.commit()
+		res = cur.fetchall()
+		return res
+
 	
 class Table:
 
@@ -151,6 +171,24 @@ class Table:
 		API.delEntry(self.table, id)
 		errcode="0"
 		return errcode
+
+	def chkIdExistInTable(self, id,table_name):
+		errcode=""
+		id=int(id) 
+		if not(id) or (id < 0) or(type(id) is not int):
+			errcode="255"
+			return errcode
+		if(API.chkIdExist(table_name, id) > 0):
+		
+			errcode="0"
+			return errcode
+		
+		else:
+			errcode="255"	#NotExist
+			return errcode
+
+		
+		
 
 	
 
